@@ -31,26 +31,28 @@ function AppContent() {
         </Logo>
       </Header>
 
-      <NavBar>
-        {state.currentView === "form" && (
-          <ChevronLeft
-            size={20}
-            style={{ cursor: "pointer" }}
-            onClick={() => {
-              dispatch({ type: "SET_VIEW", payload: "list" })
-              dispatch({ type: "SET_EDITING", payload: null })
-            }}
-          />
-        )}
-        <span>
-          Teste Front-End
+      <Content>
+        <NavBar>
           {state.currentView === "form" && (
-            <span> / {state.editingCadastro ? "Editar Cadastro" : "Novo Cadastro"}</span>
+            <ChevronLeft
+              size={20}
+              style={{ cursor: "pointer" }}
+              onClick={() => {
+                dispatch({ type: "SET_VIEW", payload: "list" })
+                dispatch({ type: "SET_EDITING", payload: null })
+              }}
+            />
           )}
-        </span>
-      </NavBar>
+          <span>
+            Teste Front-End
+            {state.currentView === "form" && (
+              <span> / {state.editingCadastro ? "Editar Cadastro" : "Novo Cadastro"}</span>
+            )}
+          </span>
 
-      <Content>{state.currentView === "list" ? <CadastroList /> : <CadastroForm />}</Content>
+        </NavBar>
+        {state.currentView === "list" ? <CadastroList /> : <CadastroForm />}
+      </Content>
     </Container>
   )
 }

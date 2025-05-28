@@ -19,12 +19,13 @@ import {
   Typography,
   Link,
   Box,
+  Tooltip,
 } from "@mui/material"
 import { Search, Plus, MoreVertical, MessageSquare } from "lucide-react"
 import { useAppContext } from "../contexts/app-context"
 import { ObservacoesModal } from "./observacoes-modal"
 import { PropriedadesModal } from "./propriedades-modal"
-import { ListHeader, SearchContainer, StyledTable } from "./styled-components"
+import { HeaderDivContainer, ListHeader, SearchContainer, StyledTable } from "./styled-components"
 import type { CadastroData } from "../types"
 
 export function CadastroList() {
@@ -80,10 +81,10 @@ export function CadastroList() {
   return (
     <>
       <ListHeader>
-        <Typography variant="h6">Registros ({filteredCadastros.length})</Typography>
-        <SearchContainer>
+        <HeaderDivContainer>
+          <Typography variant="h6">Registros ({filteredCadastros.length})</Typography>
           <Button
-            variant="contained"
+            variant="text"
             color="success"
             startIcon={<Plus size={16} />}
             onClick={() => {
@@ -93,6 +94,8 @@ export function CadastroList() {
           >
             ADICIONAR
           </Button>
+        </HeaderDivContainer>
+        <SearchContainer>
           <TextField
             size="small"
             placeholder="Pesquisar..."
@@ -132,7 +135,7 @@ export function CadastroList() {
                 <TableCell>
                   <strong>Laboratório</strong>
                 </TableCell>
-                <TableCell width="100"></TableCell>
+                <TableCell><strong>Obs.</strong></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -166,9 +169,11 @@ export function CadastroList() {
                       >
                         <MessageSquare size={16} />
                       </IconButton>
-                      <IconButton size="small" onClick={(e) => handleMenuClick(e, cadastro)}>
-                        <MoreVertical size={16} />
-                      </IconButton>
+                      <Tooltip title="Opções">
+                        <IconButton size="small" onClick={(e) => handleMenuClick(e, cadastro)}>
+                          <MoreVertical size={16} />
+                        </IconButton>
+                      </Tooltip>
                     </Box>
                   </TableCell>
                 </TableRow>

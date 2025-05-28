@@ -18,6 +18,12 @@ export const LogoContainer = styled.div`
   color: white;
 `
 
+export const HeaderDivContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`
+
 export const NavigationContainer = styled.div`
   background-color: #388e3c;
   color: white;
@@ -36,6 +42,9 @@ export const Container = styled.div`
 `
 
 export const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: white;
   padding: 1rem 2rem;
   border-bottom: 1px solid #e0e0e0;
