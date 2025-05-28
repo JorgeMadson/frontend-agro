@@ -1,4 +1,4 @@
-# 🚜 Teste Técnico Front-End — Agrotis Agroinformática
+# 🚜 Teste Técnico Front-End — Agrotis
 
 Este repositório contém a solução para o teste técnico de front-end da **Agrotis Agroinformática**, focado na construção de uma interface de cadastro e listagem com React, conforme o protótipo fornecido.
 
