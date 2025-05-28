@@ -95,105 +95,121 @@ export function CadastroForm() {
     <FormContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormGrid>
-          <Controller
-            name="nome"
-            control={control}
-            rules={{ required: "Nome é obrigatório" }}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Nome"
-                required
-                error={!!errors.nome}
-                helperText={errors.nome?.message}
-                fullWidth
-              />
-            )}
-          />
-
-          <Controller
-            name="dataInicial"
-            control={control}
-            rules={{ required: "Data inicial é obrigatória" }}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Data Inicial"
-                type="date"
-                required
-                error={!!errors.dataInicial}
-                helperText={errors.dataInicial?.message}
-                fullWidth
-                InputLabelProps={{ shrink: true }}
-              />
-            )}
-          />
-
-          <Controller
-            name="dataFinal"
-            control={control}
-            rules={{ required: "Data final é obrigatória" }}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Data Final"
-                type="date"
-                required
-                error={!!errors.dataFinal}
-                helperText={errors.dataFinal?.message}
-                fullWidth
-                InputLabelProps={{ shrink: true }}
-              />
-            )}
-          />
-
-          <Controller
-            name="propriedades"
-            control={control}
-            rules={{ required: "Selecione pelo menos uma propriedade" }}
-            render={({ field }) => (
-              <FormControl fullWidth error={!!errors.propriedades}>
-                <InputLabel>Propriedades *</InputLabel>
-                <Select
+          {/* Linha nome/data inicial/final */}
+          <FormGrid>
+            <Controller
+              name="nome"
+              control={control}
+              rules={{ required: "Nome é obrigatório" }}
+              render={({ field }) => (
+                <TextField
                   {...field}
-                  multiple
-                  input={<OutlinedInput label="Propriedades *" />}
-                  renderValue={(selected) => (
-                    <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
-                      {(selected as number[]).map((value) => {
-                        const prop = propriedades.find((p) => p.id === value)
-                        return prop ? <Chip key={value} label={prop.nome} size="small" /> : null
-                      })}
-                    </Box>
-                  )}
-                >
-                  {propriedades.map((propriedade) => (
-                    <MenuItem key={propriedade.id} value={propriedade.id}>
-                      {propriedade.nome}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-          />
+                  label="Nome"
+                  variant="standard"
+                  required
+                  error={!!errors.nome}
+                  helperText={errors.nome?.message}
+                  fullWidth
+                />
+              )}
+            />
+          </FormGrid>
 
-          <Controller
-            name="laboratorio"
-            control={control}
-            rules={{ required: "Laboratório é obrigatório" }}
-            render={({ field }) => (
-              <FormControl fullWidth error={!!errors.laboratorio}>
-                <InputLabel>Laboratório *</InputLabel>
-                <Select {...field} label="Laboratório *">
-                  {laboratorios.map((laboratorio) => (
-                    <MenuItem key={laboratorio.id} value={laboratorio.id}>
-                      {laboratorio.nome}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            )}
-          />
+          <FormGrid>
+            <Controller
+              name="dataInicial"
+              control={control}
+              rules={{ required: "Data inicial é obrigatória" }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Data Inicial"
+                  variant="standard"
+                  type="date"
+                  required
+                  error={!!errors.dataInicial}
+                  helperText={errors.dataInicial?.message}
+                  fullWidth
+                  InputLabelProps={{ shrink: true }}
+                />
+              )}
+            />
+          </FormGrid>
+
+          <FormGrid>
+            <Controller
+              name="dataFinal"
+              control={control}
+              rules={{ required: "Data final é obrigatória" }}
+              render={({ field }) => (
+                <TextField
+                  {...field}
+                  label="Data Final"
+                  variant="standard"
+                  type="date"
+                  required
+                  error={!!errors.dataFinal}
+                  helperText={errors.dataFinal?.message}
+                  fullWidth
+                  InputLabelProps={{ shrink: true }}
+                />
+              )}
+            />
+          </FormGrid>
+
+          {/* Linha propriedades/laboratorios */}
+          <FormGrid>
+            <Controller
+              name="propriedades"
+              control={control}
+              rules={{ required: "Selecione pelo menos uma propriedade" }}
+              render={({ field }) => (
+                <FormControl fullWidth error={!!errors.propriedades}>
+                  <InputLabel>Propriedades *</InputLabel>
+                  <Select
+                    {...field}
+                    multiple
+                    variant="standard"
+                    input={<OutlinedInput label="Propriedades *" />}
+                    renderValue={(selected) => (
+                      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                        {(selected as number[]).map((value) => {
+                          const prop = propriedades.find((p) => p.id === value)
+                          return prop ? <Chip key={value} label={prop.nome} size="small" /> : null
+                        })}
+                      </Box>
+                    )}
+                  >
+                    {propriedades.map((propriedade) => (
+                      <MenuItem key={propriedade.id} value={propriedade.id}>
+                        {propriedade.nome}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              )}
+            />
+          </FormGrid>
+
+          <FormGrid>
+            <Controller
+              name="laboratorio"
+              control={control}
+              rules={{ required: "Laboratório é obrigatório" }}
+              render={({ field }) => (
+                <FormControl fullWidth error={!!errors.laboratorio}>
+                  <InputLabel>Laboratório *</InputLabel>
+                  <Select {...field} label="Laboratório *" variant="standard">
+                    {laboratorios.map((laboratorio) => (
+                      <MenuItem key={laboratorio.id} value={laboratorio.id}>
+                        {laboratorio.nome}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              )}
+            />
+          </FormGrid>
         </FormGrid>
 
         <FullWidth>
@@ -204,10 +220,10 @@ export function CadastroForm() {
               <TextField
                 {...field}
                 label="Observações"
+                variant="standard"
                 multiline
-                rows={4}
                 fullWidth
-                inputProps={{ maxLength: 100 }}
+                slotProps={{htmlInput: { maxLength: 100 }}}
                 helperText={`${field.value.length}/100`}
               />
             )}
@@ -215,7 +231,7 @@ export function CadastroForm() {
         </FullWidth>
 
         <Box mt={3} display="flex" justifyContent="flex-end">
-          <Button type="submit" variant="contained" color="primary" size="large">
+          <Button type="submit" variant="contained" color="success" size="large">
             SALVAR
           </Button>
         </Box>

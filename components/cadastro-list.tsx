@@ -140,7 +140,7 @@ export function CadastroList() {
             </TableHead>
             <TableBody>
               {filteredCadastros.map((cadastro) => (
-                <TableRow key={cadastro.id + new Date().toDateString()} hover>
+                <TableRow key={cadastro.nome} hover>
                   <TableCell>{cadastro.id}</TableCell>
                   <TableCell>{cadastro.nome}</TableCell>
                   <TableCell>{formatDate(cadastro.dataInicial)}</TableCell>
