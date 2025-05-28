@@ -7,6 +7,7 @@ import { AppProvider, useAppContext } from "../contexts/app-context"
 import { CadastroForm } from "../components/cadastro-form"
 import { CadastroList } from "../components/cadastro-list"
 import { Container, Header, Logo, NavBar, Content } from "../components/styled-components"
+import Image from "next/image"
 
 const theme = createTheme({
   palette: {
@@ -26,7 +27,7 @@ function AppContent() {
     <Container>
       <Header>
         <Logo>
-          <TreePine size={24} color="#00876E" />
+          <Image src="/logo-icon.png"  width={32} height={32} alt="Agrotis Logo"/>
           AGROTIS
         </Logo>
       </Header>
