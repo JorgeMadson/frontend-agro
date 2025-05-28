@@ -95,5 +95,6 @@ pnpm dev
 * Os dados são mantidos em memória com React Context, sem backend persistente.
 * O formulário é validado com `react-hook-form` e custom hooks.
 * O projeto usa `styled-components` para o tema visual, e `tailwindcss` para utilitários.
+* Estou usando o `pnpm` ao invés do `npm` para economizar armazenamento.
 
 ---
